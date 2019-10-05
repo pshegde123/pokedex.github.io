@@ -20,7 +20,9 @@ This is a fun project which allows user to select a pokemon character and view a
   
 ### APIs to be Used 
 * [PokeAPI](pokeapi.co) - This API provides all the Pokemon data in RESTful format. 
+* [Plotly](plot.ly) - Graphing libraries
 * [Giphy API](giphy.com) - This API provides largest collection of online GIF's. 
+
 
 ### Rough Breakdown of Tasks
 * Front-end development  -  Eric , Christian
