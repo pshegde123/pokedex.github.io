@@ -54,7 +54,7 @@ $(document).ready(function () {
     event.preventDefault();
     var param = document.getElementById("pokeInput").value;
     var myAPIKey = "5gZiOMKs2QZinGl65iznaAkJkNwQXkz1";
-    var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=" + myAPIKey + "&tag=" + param + "&rating=G";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + myAPIKey + "&q=" + param + "&limit=1&rating=G";
     console.log(queryURL);
 
     $.ajax({
@@ -63,16 +63,19 @@ $(document).ready(function () {
     }).then(function (response) {
       $("#pokeGif").empty();
       console.log(response);
-      console.log(response.data.images.fixed_height.url);
+      //console.log(response.data.images.fixed_height.url);
       var newDiv = $("<div>");
       newDiv.addClass('col-xs-12');
 
       // Retrieving the URL for the image
-      var stillImage = response.data.images.fixed_height_still.url;
-      var animatedImage = response.data.images.fixed_height.url;
+      //var stillImage = response.data.images.fixed_height_still.url;
+      //var animatedImage = response.data.images.fixed_height.url;
+      var stillImage = response.data[0].images.fixed_height_still.url;
+      var animatedImage = response.data[0].images.fixed_height.url;
+
 
       var image = $("<img class='gif'>");
-      image.attr("src", response.data.images.fixed_height.url);
+      image.attr("src", response.data[0].images.fixed_height.url);
       image.attr("data-state", "animated");
       image.attr("data-still", stillImage);
       image.attr("data-animated", animatedImage);
