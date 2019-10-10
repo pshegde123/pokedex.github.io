@@ -71,5 +71,6 @@ $(document).ready(function () {
     }
   }
 
+  //onClick event handeler for submit button
   $(document).on("click", ".gif", stillAnimate);
 });
