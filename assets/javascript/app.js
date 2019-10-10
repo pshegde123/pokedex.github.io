@@ -1,19 +1,45 @@
 $(document).ready(function () {
-  //Load PokeAPI , Giphy and Plotly API
-  //Configure Firebase database
-  //Initialize the firebase app
-  //Get database reference
 
-  //Store all the retrieved pokemon data in firebase
+  var allPokeURL = "https://pokeapi.co/api/v2/pokemon/?limit=20&offset=20";
+  //console.log(allPokeURL);
+  $.getJSON(allPokeURL, function (data) {
+    //console.log(data);
+    for (var i = 0; i < 20; i++) {
+      //console.log(data.results[i].name);
+      var pokeName = data.results[i].name;
+      //console.log("pokeName=",pokeName);
+      $.getJSON(data.results[i].url, function (response) {
+        var imageURL = response.sprites.front_default;
+        //console.log("image url=", imageURL);
+        var newDiv = $("<div>")
+        /*newDiv.addClass("card");
+        var card = $("<div>");
+        card.addClass('card-image');
+        var sprite = $("<img>");
+        sprite.attr("src",imageURL);
 
-  //when a navbar element is clicked , display images for that category
+        card.append(sprite);
+        newDiv.append(card);*/
+        newDiv.html("\
+        <div class='col s12 m6'>\
+          <div class='card'>\
+            <div class='card-image'>\
+              <img src="+imageURL+">\
+              <span class='card-title'></span>\
+              <a class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>add</i></a>\
+            </div>\
+            <div class='card-content'>\
+              <p>"+pokeName+"</p>\
+            </div>\
+          </div>\
+        </div>");
 
-  //when an image is clicked retrieve the stats from PokeAPI and display on screen
-  //Input the same stats to Ploytly API and generate a bar graph, display graph on screen
+        $(".left-panel").append(newDiv);
+      });
+    }
+  });
 
-  //on exit remove all the userdata from firebase 
-
-  function pokeSubmit() {
+  function getSearchDetails() {
     var param = document.getElementById("pokeInput").value;
     console.log(param);
     var pokeURL = "http://pokeapi.co/api/v2/pokemon/" + param;
@@ -25,7 +51,6 @@ $(document).ready(function () {
     });
   }
   $(".ui-btn").on("click", function () {
-    //pokeSubmit();
     event.preventDefault();
     var param = document.getElementById("pokeInput").value;
     var myAPIKey = "5gZiOMKs2QZinGl65iznaAkJkNwQXkz1";
@@ -36,7 +61,7 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET"
     }).then(function (response) {
-      $("#pokeDetails").empty();
+      $("#pokeGif").empty();
       console.log(response);
       console.log(response.data.images.fixed_height.url);
       var newDiv = $("<div>");
@@ -53,7 +78,7 @@ $(document).ready(function () {
       image.attr("data-animated", animatedImage);
 
       newDiv.append(image);
-      $("#pokeDetails").prepend(newDiv);
+      $("#pokeGif").prepend(newDiv);
     });
   })
 
