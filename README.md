@@ -1,6 +1,6 @@
 # Project-1
 ##### This is a course project for Georgia Tech Full Stack Web Development Bootcamp
----
+
 
 ## Details
 ### Project Title  
