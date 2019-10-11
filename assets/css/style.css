@@ -1,8 +1,13 @@
 @font-face {
     font-family: myFont;
-    src: url("../fonts/pokemon");
+    src: url("../fonts/Pokemon\ Solid.ttf");
   }
 
 .brand-logo {
     font-family: myFont;
+    color: yellow;
+}
+body {
+    background: url(../images/Sun&Moon.jpg);
+    background-size: 100%;
 }
