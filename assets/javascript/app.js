@@ -24,12 +24,12 @@ $(document).ready(function () {
         <div class='col s12 m6'>\
           <div class='card'>\
             <div class='card-image'>\
-              <img src="+imageURL+">\
+              <img src="+ imageURL + ">\
               <span class='card-title'></span>\
               <a class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>add</i></a>\
             </div>\
             <div class='card-content'>\
-              <p>"+pokeName+"</p>\
+              <p>"+ pokeName + "</p>\
             </div>\
           </div>\
         </div>");
