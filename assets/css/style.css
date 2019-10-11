@@ -1,19 +1,19 @@
 @font-face {
     font-family: myFont;
-    src: url("../fonts/Pokemon\ Solid.ttf");
+    src: url("../fonts/Pokemon\ Solid1.ttf");
   }
 
-nav .brand-logo {
+.brand-logo {
     font-family: myFont;
-    color: yellow;
-}
-body {
-    background: url(../images/pokemon_go_hd-wide.jpg);
-    background-size: 100%;
-    /* opacity: .5; */
-    filter: alpha(opacity=50);
 }
 
-h4 {
-    
+body {
+    background: url(../images/pokemon_go_hd-wide.jpg);
+    /* background-repeat: no-repeat; */
+    /* background-size: 100%; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
 }
