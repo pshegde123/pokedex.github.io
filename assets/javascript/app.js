@@ -29,7 +29,6 @@ $(document).ready(function () {
         var content = $("<div>");
         content.addClass("card-content truncate");
         content.text(pokeName);
-
         cardImage.append(sprite);
         card.append(cardImage);
         card.append(content);
