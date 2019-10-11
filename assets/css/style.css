@@ -3,11 +3,17 @@
     src: url("../fonts/Pokemon\ Solid.ttf");
   }
 
-.brand-logo {
+nav .brand-logo {
     font-family: myFont;
     color: yellow;
 }
 body {
-    background: url(../images/Sun&Moon.jpg);
+    background: url(../images/pokemon_go_hd-wide.jpg);
     background-size: 100%;
+    /* opacity: .5; */
+    filter: alpha(opacity=50);
+}
+
+h4 {
+    
 }
