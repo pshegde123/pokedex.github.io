@@ -31,7 +31,6 @@ $(document).ready(function () {
         var content = $("<div style='border-top:1px solid;padding:1px;'>");
         content.addClass("card-content center-align truncate");
         content.text(pokeName);
-
         cardImage.append(sprite);
         card.append(cardImage);
         card.append(content);
