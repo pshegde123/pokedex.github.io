@@ -3,8 +3,16 @@
     src: url("../fonts/Pokemon\ Solid1.ttf");
   }
 
-.brand-logo {
+nav .brand-logo {
+    font-size: 50px;
     font-family: myFont;
+    color: yellow;
+    text-shadow: 2px 2px blue;
+    
+}
+
+.nav-wrapper {
+    background-color: brown;
 }
 
 body {
@@ -14,6 +22,11 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 0.5;
-    filter: alpha(opacity=50);
+    /* opacity: 0.5; */
+    /* filter: alpha(opacity=50); */
+}
+
+#colum {
+    /* background-color: black; */
+    background-image: url("../Images/pokeball3.gif");
 }
