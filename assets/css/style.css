@@ -1,0 +1,22 @@
+<<<<<<< HEAD
+=======
+@font-face {
+    font-family: myFont;
+    src: url("../fonts/Pokemon\ Solid1.ttf");
+  }
+
+.brand-logo {
+    font-family: myFont;
+}
+
+body {
+    background: url(../images/pokemon_go_hd-wide.jpg);
+    /* background-repeat: no-repeat; */
+    /* background-size: 100%; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+>>>>>>> master
