@@ -1,39 +1,39 @@
 $(document).ready(function () {
 
-  var allPokeURL = "https://pokeapi.co/api/v2/pokemon/?limit=20&offset=20";
+  var myLimit = 12;
+  var allPokeURL = "https://pokeapi.co/api/v2/pokemon/?limit="+myLimit+"&offset=20";
   //console.log(allPokeURL);
   $.getJSON(allPokeURL, function (data) {
     //console.log(data);
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < myLimit; i++) {
+      //console.log(data.results[i]);
       //console.log(data.results[i].name);
-      var pokeName = data.results[i].name;
-      //console.log("pokeName=",pokeName);
-      $.getJSON(data.results[i].url, function (response) {
+      let pokeName = data.results[i].name;
+      console.log("pokeName1 = ",pokeName);
+      //console.log(data.results[i].url);
+      var statsURL = data.results[i].url;
+      $.getJSON(statsURL,function (response) {
         var imageURL = response.sprites.front_default;
-        //console.log("image url=", imageURL);
         var newDiv = $("<div>")
-        /*newDiv.addClass("card");
+        newDiv.addClass("col s12 m6");
         var card = $("<div>");
-        card.addClass('card-image');
+        card.addClass('card');
+        var cardImage = $("<div>");
+        cardImage.addClass("card-image");
         var sprite = $("<img>");
         sprite.attr("src",imageURL);
-
-        card.append(sprite);
-        newDiv.append(card);*/
-        newDiv.html("\
-        <div class='col s12 m6'>\
-          <div class='card'>\
-            <div class='card-image'>\
-              <img src="+ imageURL + ">\
-              <span class='card-title'></span>\
-              <a class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>add</i></a>\
-            </div>\
-            <div class='card-content'>\
-              <p>"+ pokeName + "</p>\
-            </div>\
-          </div>\
-        </div>");
-
+        var addIcon ="<a class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>add</i></a>";
+        //addIcon.addClass("btn-floating halfway-fab waves-effect waves-light red");
+        //addIcon.text("<i class='material-icons'>add</i>");
+        cardImage.append(addIcon);
+        var content = $("<div>");
+        content.addClass("card-content truncate");
+        content.text(pokeName);
+        cardImage.append(sprite);
+        card.append(cardImage);
+        card.append(content);
+        //console.log("pokeName2 = ",pokeName);
+        newDiv.append(card);
         $(".left-panel").append(newDiv);
       });
     }
