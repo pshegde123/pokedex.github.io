@@ -71,10 +71,10 @@ $(document).ready(function () {
       image.attr("data-still", stillImage);
       image.attr("data-animated", animatedImage);
 
-      var addIcon = "<a class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>add</i></a>";
+      //var addIcon = "<a class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>add</i></a>";
 
       newDiv.append(image);
-      newDiv.append(addIcon);
+      //newDiv.append(addIcon);
       $("#pokeGif").prepend(newDiv);
       //show stats in <div> pokeDetails
       showStatDetails(name);
@@ -112,7 +112,7 @@ $(document).ready(function () {
       favButton.addClass('btn fav');
       //favButton.attr("onClick",addToFavorite);
       //addButton.text("<i class='material-icons left'>favorite</i>Favorite</button>");
-      favButton.text("Favorite");
+      favButton.html("<i class='material-icons'>favorite</i> Collect the card");
       $("#pokeDetails").append(favButton);
     });
   }
