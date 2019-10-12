@@ -1,4 +1,4 @@
-var currentCardName = "";
+let currentCardName = "";
 
 $(document).ready(function () {
 
@@ -108,8 +108,8 @@ $(document).ready(function () {
       newList.append(listItemHeight);
       //detailsDiv.append(newList);
       $("#pokeDetails").append(newList);
-      var favButton = $("<button id='fav'>");
-      favButton.addClass('btn');
+      var favButton = $("<button>");
+      favButton.addClass('btn fav');
       //favButton.attr("onClick",addToFavorite);
       //addButton.text("<i class='material-icons left'>favorite</i>Favorite</button>");
       favButton.text("Favorite");
@@ -118,16 +118,13 @@ $(document).ready(function () {
   }
 
   //add selected card to pokedex
-  //function addToFavorite(){
-  $("#fav").on("click", function () {
+  //$("#fav").on("click", function ()
+  function addToFavorite(){
     console.log("Add to Pokedex.");
-    console.log("here 1");
     console.log(currentCardName);
-    console.log("here 2");
     var favURL = "https://pokeapi.co/api/v2/pokemon/" + currentCardName;
     console.log(favURL);
     console.log("here 3");
-    //console.log(allPokeURL);
     $.getJSON(favURL, function (data) {
       var newDiv = $("<div>")
       newDiv.addClass("col s12 m6");
@@ -136,18 +133,17 @@ $(document).ready(function () {
       var cardImage = $("<div>");
       cardImage.addClass("card-image");
       var sprite = $("<img class='cardImage'>");
-      sprite.attr("src", favURL);
+      sprite.attr("src", data.sprites.front_default);
       var content = $("<div style='border-top:1px solid;padding:1px;'>");
       content.addClass("card-content center-align truncate");
       content.text(currentCardName);
       cardImage.append(sprite);
       card.append(cardImage);
       card.append(content);
-      //console.log("pokeName2 = ",pokeName);
       newDiv.append(card);
       $(".right-panel").append(newDiv);
     });
-  });
+  }
 
   //Submit button onClick handler
   $(".ui-btn").on("click", function () {
@@ -203,5 +199,5 @@ $(document).ready(function () {
   $(document).on("click", ".gif", stillAnimate);
   //when image is clicked display gif and stats
   $(document).on("click", ".cardImage", displayStats);
-  //$(document).on("click", "#fav", addToFavorite());
+  $(document).on("click", ".fav", addToFavorite);
 });
