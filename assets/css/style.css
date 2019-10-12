@@ -15,11 +15,11 @@ nav .brand-logo {
   background-size: 80vmin ;
   background-repeat: no-repeat;
   background-color: #f83138;
+  font-size: 50px;  
+  font-family: myFont;
+  color: yellow;
+  text-shadow: 2px 2px blue;
 
-    font-size: 50px;
-    font-family: myFont;
-    color: yellow;
-    text-shadow: 2px 2px blue;
     
 }
 
@@ -34,6 +34,7 @@ body {
     background-size: cover;
     /* opacity: 0.5; */
     /* filter: alpha(opacity=50); */
+    color: wheat;
 
 }
 
