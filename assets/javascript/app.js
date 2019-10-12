@@ -89,6 +89,7 @@ $(document).ready(function () {
       //console.log(data);
       //console.log(data.id)
       $("#pokeDetails").empty();
+      
       //var detailsDiv = $("<div id='stats'>");
       var newList = $("<ul>");
       var listItemName = $("<li>Name: "+data.name+"</li>");
@@ -108,6 +109,8 @@ $(document).ready(function () {
       newList.append(listItemHeight);
       //detailsDiv.append(newList);
       $("#pokeDetails").append(newList);
+      var addButton = $("<a class='btn-floating btn-large waves-effect waves-light red'><i class='material-icons'>add</i></a>");
+      $("#pokeDetails").append(addButton);
     });
   }
 
@@ -140,7 +143,6 @@ $(document).ready(function () {
       image.attr("data-state", "animated");
       image.attr("data-still", stillImage);
       image.attr("data-animated", animatedImage);
-      var addButton =$("<btn class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>add</i></button>");
       newDiv.append(image);
       $("#pokeGif").prepend(newDiv);
       //now show the stats for the selected Pokemon
