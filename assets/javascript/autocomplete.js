@@ -1,7 +1,4 @@
 
-    var pokemon = [
-
-
         var pokemon = [
             "Abomasnow",
             "Abra",
