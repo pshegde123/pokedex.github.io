@@ -89,25 +89,25 @@ $(document).ready(function () {
       //console.log(data);
       //console.log(data.id)
       $("#pokeDetails").empty();
-      var detailsDiv = $("<div id='stats'>");
+      //var detailsDiv = $("<div id='stats'>");
       var newList = $("<ul>");
-      var listItemName = $("<li>Name:"+data.name+"</li>");
+      var listItemName = $("<li>Name: "+data.name+"</li>");
 
       var listItemID = $("<li>");
-      listItemID.text("Id:" + data.id);
+      listItemID.text("Id: " + data.id);
 
       var listItemWeight = $("<li>");
-      listItemWeight.text("Weight:" + data.weight);
+      listItemWeight.text("Weight: " + data.weight);
 
       var listItemHeight = $("<li>");
-      listItemHeight.text("Height:"+data.height);
+      listItemHeight.text("Height: "+data.height);
 
       newList.append(listItemName);
       newList.append(listItemID);
       newList.append(listItemWeight);
       newList.append(listItemHeight);
-      detailsDiv.append(newList);
-      $("#pokeDetails").append(detailsDiv);
+      //detailsDiv.append(newList);
+      $("#pokeDetails").append(newList);
     });
   }
 
@@ -140,9 +140,8 @@ $(document).ready(function () {
       image.attr("data-state", "animated");
       image.attr("data-still", stillImage);
       image.attr("data-animated", animatedImage);
-      var addIcon ="<a class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>add</i></a>";
+      var addButton =$("<btn class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>add</i></button>");
       newDiv.append(image);
-      newDiv.append(addIcon);
       $("#pokeGif").prepend(newDiv);
       //now show the stats for the selected Pokemon
       showStatDetails(param);
