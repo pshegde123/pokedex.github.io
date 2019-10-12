@@ -581,7 +581,7 @@
 ,"Gothitelle"
 ,"Solosis"
 ,"Duosion"
-,"Reuniclus
+,"Reuniclus"
 ,"Ducklett"
 ,"Swanna"
 ,"Vanillite"
@@ -722,7 +722,7 @@
 ,"Yveltal"
 ,"Zygarde"
 ,"Diancie" ];
-$( "#tags" ).autocomplete({
+$( "#pokeInput" ).autocomplete({
       source: pokemon
     });
   } );
