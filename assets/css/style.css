@@ -1,8 +1,42 @@
 @font-face {
     font-family: myFont;
-    src: url("../fonts/pokemon");
+    src: url("../fonts/Pokemon\ Solid1.ttf");
   }
 
-.brand-logo {
+nav .brand-logo {
     font-family: myFont;
+    font-size: 50px;
+    margin-top:-12px;
+    margin-left: 5px;
+}
+
+.nav-wrapper {
+  background-image: url("../Images/pokemon_play_pokemon_banner-02-2x.jpg");
+  background-size: 80vmin ;
+  background-repeat: no-repeat;
+  background-color: #f83138;
+
+    font-size: 50px;
+    font-family: myFont;
+    color: yellow;
+    text-shadow: 2px 2px blue;
+    
+}
+
+
+
+body {
+    background: url(../images/pokemon_go_hd-wide.jpg);
+    /* background-repeat: no-repeat; */
+    /* background-size: 100%; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* opacity: 0.5; */
+    /* filter: alpha(opacity=50); */
+
+}
+
+#column {
+  background-image: url("../Images/pokeball3.gif");
 }
