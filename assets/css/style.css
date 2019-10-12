@@ -1,3 +1,11 @@
+* {
+  color: white;
+}
+
+.card-content {
+  color: black;
+}
+
 @font-face {
     font-family: myFont;
     src: url("../fonts/Pokemon\ Solid1.ttf");
