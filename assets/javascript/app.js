@@ -1,3 +1,5 @@
+var currentCardName = "";
+
 $(document).ready(function () {
 
   var myLimit = 12;
@@ -24,10 +26,6 @@ $(document).ready(function () {
         sprite.attr("src", imageURL);
         sprite.attr("data-name", pokeName);
         sprite.attr("data-url", imageURL);
-        //var addIcon ="<a class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>add</i></a>";
-        //addIcon.addClass("btn-floating halfway-fab waves-effect waves-light red");
-        //addIcon.text("<i class='material-icons'>add</i>");
-        //cardImage.append(addIcon);
         var content = $("<div style='border-top:1px solid;padding:1px;'>");
         content.addClass("card-content center-align truncate");
         content.text(pokeName);
@@ -42,7 +40,7 @@ $(document).ready(function () {
   });
 
   //when image is clicked , display gif and stats 
-  function displayStats() {  
+  function displayStats() {
     $("#pokeGif").empty();
     var name = $(this).attr("data-name");
     var url = $(this).attr("data-url");
@@ -53,7 +51,7 @@ $(document).ready(function () {
     $.ajax({
       url: queryURL,
       method: "GET"
-    }).then(function (response){ 
+    }).then(function (response) {
       $("#pokeGif").empty();
       //console.log(response);
       //console.log(response.data.images.fixed_height.url);
@@ -73,7 +71,7 @@ $(document).ready(function () {
       image.attr("data-still", stillImage);
       image.attr("data-animated", animatedImage);
 
-      var addIcon ="<a class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>add</i></a>";
+      var addIcon = "<a class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>add</i></a>";
 
       newDiv.append(image);
       newDiv.append(addIcon);
@@ -89,10 +87,11 @@ $(document).ready(function () {
       //console.log(data);
       //console.log(data.id)
       $("#pokeDetails").empty();
-      
+
       //var detailsDiv = $("<div id='stats'>");
       var newList = $("<ul>");
-      var listItemName = $("<li>Name: "+data.name+"</li>");
+      var listItemName = $("<li>Name: " + data.name + "</li>");
+      currentCardName = data.name;
 
       var listItemID = $("<li>");
       listItemID.text("Id: " + data.id);
@@ -101,7 +100,7 @@ $(document).ready(function () {
       listItemWeight.text("Weight: " + data.weight);
 
       var listItemHeight = $("<li>");
-      listItemHeight.text("Height: "+data.height);
+      listItemHeight.text("Height: " + data.height);
 
       newList.append(listItemName);
       newList.append(listItemID);
@@ -109,15 +108,51 @@ $(document).ready(function () {
       newList.append(listItemHeight);
       //detailsDiv.append(newList);
       $("#pokeDetails").append(newList);
-      var addButton = $("<a class='btn-floating btn-large waves-effect waves-light red'><i class='material-icons'>add</i></a>");
-      $("#pokeDetails").append(addButton);
+      var favButton = $("<button id='fav'>");
+      favButton.addClass('btn');
+      //favButton.attr("onClick",addToFavorite);
+      //addButton.text("<i class='material-icons left'>favorite</i>Favorite</button>");
+      favButton.text("Favorite");
+      $("#pokeDetails").append(favButton);
     });
   }
+
+  //add selected card to pokedex
+  //function addToFavorite(){
+  $("#fav").on("click", function () {
+    console.log("Add to Pokedex.");
+    console.log("here 1");
+    console.log(currentCardName);
+    console.log("here 2");
+    var favURL = "https://pokeapi.co/api/v2/pokemon/" + currentCardName;
+    console.log(favURL);
+    console.log("here 3");
+    //console.log(allPokeURL);
+    $.getJSON(favURL, function (data) {
+      var newDiv = $("<div>")
+      newDiv.addClass("col s12 m6");
+      var card = $("<div>");
+      card.addClass('card');
+      var cardImage = $("<div>");
+      cardImage.addClass("card-image");
+      var sprite = $("<img class='cardImage'>");
+      sprite.attr("src", favURL);
+      var content = $("<div style='border-top:1px solid;padding:1px;'>");
+      content.addClass("card-content center-align truncate");
+      content.text(currentCardName);
+      cardImage.append(sprite);
+      card.append(cardImage);
+      card.append(content);
+      //console.log("pokeName2 = ",pokeName);
+      newDiv.append(card);
+      $(".right-panel").append(newDiv);
+    });
+  });
 
   //Submit button onClick handler
   $(".ui-btn").on("click", function () {
     event.preventDefault();
-    var param=document.getElementById("pokeInput").value;;
+    var param = document.getElementById("pokeInput").value;;
     var myAPIKey = "5gZiOMKs2QZinGl65iznaAkJkNwQXkz1";
     var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + myAPIKey + "&q=" + param + "&limit=1&rating=G";
     //console.log(queryURL);
@@ -153,7 +188,7 @@ $(document).ready(function () {
   //When called this method checks value of image attribute 'data-state'
   //if 'data-state' is still, animated image is displayed
   //else if 'data-state' is animated, still image is displayed
-function stillAnimate(){
+  function stillAnimate() {
     var state = $(this).attr("data-state");
     if (state === "still") {
       $(this).attr("src", $(this).attr("data-animated"));
@@ -168,4 +203,5 @@ function stillAnimate(){
   $(document).on("click", ".gif", stillAnimate);
   //when image is clicked display gif and stats
   $(document).on("click", ".cardImage", displayStats);
+  //$(document).on("click", "#fav", addToFavorite());
 });
