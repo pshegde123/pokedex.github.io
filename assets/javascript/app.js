@@ -137,20 +137,38 @@ $(document).ready(function () {
       var content = $("<div style='border-top:1px solid;padding:1px;'>");
       content.addClass("card-content center-align truncate");
       content.text(currentCardName);
+      card.attr("id",currentCardName);
       cardImage.append(sprite);
       card.append(cardImage);
       card.append(content);
+      var deleteButton = $("<a class='btn-floating btn-small waves-effect waves-light close-button'><i class='material-icons'>close</i></a>");
+      deleteButton.attr("name",currentCardName);
+      card.prepend(deleteButton);
       newDiv.append(card);
       $(".right-panel").append(newDiv);
     });
+  }
+  function removeFromFavorites(){
+    console.log("Remove this card");
+    console.log($(this).attr('name'));
+    var currCard = $(this).attr('name');
+    var element = document.getElementById(currCard);
+    element.remove();
   }
 
   //Submit button onClick handler
   $(".ui-btn").on("click", function () {
     event.preventDefault();
     var param = document.getElementById("pokeInput").value;;
+    // param may be a pokemon name or number
+    // pass it to poke api and get pokemon name
+    var pokeURL = "https://pokeapi.co/api/v2/pokemon/" + param.trim().toLowerCase();
+    $.getJSON(pokeURL, function (data) {
+      pokemonName = data.name;
+    });
+    ////
     var myAPIKey = "5gZiOMKs2QZinGl65iznaAkJkNwQXkz1";
-    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + myAPIKey + "&q=" + param + "&limit=1&rating=G";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + myAPIKey + "&q=" + pokemonName + "&limit=1&rating=G";
     //console.log(queryURL);
 
     $.ajax({
@@ -200,4 +218,6 @@ $(document).ready(function () {
   //when image is clicked display gif and stats
   $(document).on("click", ".cardImage", displayStats);
   $(document).on("click", ".fav", addToFavorite);
+  //remove this card from favorites
+  $(document).on("click",".close-button",removeFromFavorites);
 });
