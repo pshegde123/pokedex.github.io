@@ -1,4 +1,5 @@
 let currentCardName = "";
+let count = 0;
 
 $(document).ready(function () {
 
@@ -120,63 +121,74 @@ $(document).ready(function () {
   //add selected card to pokedex
   //$("#fav").on("click", function ()
   function addToFavorite(){
-    console.log("Add to Pokedex.");
-    console.log(currentCardName);
+    //console.log("Add to Pokedex.");
+    //console.log(currentCardName);
     var favURL = "https://pokeapi.co/api/v2/pokemon/" + currentCardName;
-    console.log(favURL);
-    console.log("here 3");
+    //console.log(favURL);
     $.getJSON(favURL, function (data) {
       var newDiv = $("<div>")
       newDiv.addClass("col s12 m6");
+      
       var card = $("<div>");
       card.addClass('card');
+      
       var cardImage = $("<div>");
       cardImage.addClass("card-image");
+      
       var sprite = $("<img class='cardImage'>");
       sprite.attr("src", data.sprites.front_default);
+      
       var content = $("<div style='border-top:1px solid;padding:1px;'>");
       content.addClass("card-content center-align truncate");
       content.text(currentCardName);
-      card.attr("id",currentCardName);
+      card.attr("id",currentCardName+count);
+      console.log("card id=",currentCardName+count);
       cardImage.append(sprite);
       card.append(cardImage);
       card.append(content);
+      
       var deleteButton = $("<a class='btn-floating btn-small waves-effect waves-light close-button'><i class='material-icons'>close</i></a>");
-      deleteButton.attr("name",currentCardName);
+      deleteButton.attr("name",currentCardName+count);
+
       card.prepend(deleteButton);
       newDiv.append(card);
+      
+      count++;
       $(".right-panel").append(newDiv);
     });
   }
   function removeFromFavorites(){
-    console.log("Remove this card");
-    console.log($(this).attr('name'));
-    var currCard = $(this).attr('name');
-    var element = document.getElementById(currCard);
+    //console.log("Remove this card");
+    //console.log($(this).attr('name'));
+    var cardToRemove = $(this).attr('name');
+    console.log("delete card id=",cardToRemove);
+    var element = document.getElementById(cardToRemove);
     element.remove();
   }
 
   //Submit button onClick handler
   $(".ui-btn").on("click", function () {
     event.preventDefault();
-    var param = document.getElementById("pokeInput").value;;
+    var param = document.getElementById("pokeInput").value;
+
     // param may be a pokemon name or number
     // pass it to poke api and get pokemon name
+    let pokemonName="";  //default name
     var pokeURL = "https://pokeapi.co/api/v2/pokemon/" + param.trim().toLowerCase();
     $.getJSON(pokeURL, function (data) {
-      pokemonName = data.name;
-    });
-    ////
+       console.log("data=",data);
+       pokemonName = data.name;
+       //console.log("pokemonName=",pokemonName);
     var myAPIKey = "5gZiOMKs2QZinGl65iznaAkJkNwQXkz1";
     var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + myAPIKey + "&q=" + pokemonName + "&limit=1&rating=G";
-    //console.log(queryURL);
+    //console.log("queryURL=",queryURL);
 
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function (response) {
       $("#pokeGif").empty();
-      console.log(response);
+      //console.log(response);
       //console.log(response.data.images.fixed_height.url);
       var newDiv = $("<div>");
       newDiv.addClass('col-xs-12');
@@ -197,6 +209,7 @@ $(document).ready(function () {
       //now show the stats for the selected Pokemon
       showStatDetails(param);
     });
+  }); // $.getJSON(pokeURL, function (data) 
   });
 
   //When called this method checks value of image attribute 'data-state'
