@@ -106,12 +106,25 @@ $(document).ready(function () {
   function showStatDetails(charName) {
     var pokeURL = "https://pokeapi.co/api/v2/pokemon/" + charName.trim().toLowerCase();
     $.getJSON(pokeURL, function (data) {
-      console.log(data);
+      //console.log(data);
       //console.log(data.id)
       $("#pokeDetails").empty();
 
       //var detailsDiv = $("<div id='stats'>");
       var newList = $("<ul>");
+      
+      //pokemon description
+      var listItemDescription=$("<li>");
+      var descURL = data.species.url;
+      $.getJSON(descURL,function(result){
+        var flavor_count = result.flavor_text_entries.length;
+        for (let m=0;m<flavor_count;m++){
+         if(result.flavor_text_entries[m].language.name == "en"){
+            listItemDescription.text("Description:"+result.flavor_text_entries[m].flavor_text);
+         }
+        }
+      });
+
       var listItemName = $("<li>Name: " + data.name + "</li>");
       currentCardName = data.name;
 
@@ -125,21 +138,38 @@ $(document).ready(function () {
       listItemHeight.text("Height: " + data.height);
 
       //show abilities of selected pokemon
-      var listOfAbilities=[];
+      var listOfAbilities = [];
       var ability_count = data.abilities.length;
-      for (let i=0;i<ability_count;i++){
+      for (let i = 0; i < ability_count; i++) {
         listOfAbilities.push(data.abilities[i].ability.name);
       }
       //console.log(listOfAbilities);
-      var listItemAbility=$("<li>");
-      var totalAbilities= listOfAbilities.toString();
-      listItemAbility.text("Abilities: " +totalAbilities);
+      var listItemAbility = $("<li>");
+      var totalAbilities = listOfAbilities.toString();
+      listItemAbility.text("Abilities: " + totalAbilities);
 
+      //show 'held-items' for the selected pokemon.
+      var heldItems = [];
+      var items_count = data.held_items.length;
+      for (let j = 0; j < items_count; j++) {
+        heldItems.push(data.held_items[j].item.name);
+      }
+      var listItemHeldItems = $("<li>");
+      var allHeldItems = heldItems.toString();
+      if (allHeldItems.length > 0) {
+        listItemHeldItems.text("Held items: " + allHeldItems);
+      }
+      
       newList.append(listItemName);
+      newList.append(listItemDescription);
       newList.append(listItemID);
       newList.append(listItemWeight);
       newList.append(listItemHeight);
       newList.append(listItemAbility);
+      if (allHeldItems.length > 0) {
+        newList.append(listItemHeldItems);
+      }
+
       //detailsDiv.append(newList);
       $("#pokeDetails").append(newList);
       var favButton = $("<button>");
@@ -196,7 +226,7 @@ $(document).ready(function () {
 
       var deleteButton = $("<a class='btn-floating btn-small waves-effect waves-light close-button'><i class='material-icons'>close</i></a>");
       deleteButton.attr("name", child_id);
-      deleteButton.attr("data-key",childSnapShot.key);
+      deleteButton.attr("data-key", childSnapShot.key);
 
       card.prepend(deleteButton);
       newDiv.append(card);
@@ -283,13 +313,13 @@ $(document).ready(function () {
 
   //still or animated image?
   $(document).on("click", ".gif", stillAnimate);
-  
+
   //when image is clicked display gif and stats
   $(document).on("click", ".cardImage", displayStats);
 
   //When 'Add to Favorites' button is clicked save details to database.
   $(document).on("click", ".fav", saveToDatabase);
-  
+
   //remove this card from favorites and database.
   $(document).on("click", ".close-button", removeFromFavorites);
 });
