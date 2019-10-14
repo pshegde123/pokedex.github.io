@@ -106,7 +106,7 @@ $(document).ready(function () {
   function showStatDetails(charName) {
     var pokeURL = "https://pokeapi.co/api/v2/pokemon/" + charName.trim().toLowerCase();
     $.getJSON(pokeURL, function (data) {
-      //console.log(data);
+      console.log(data);
       //console.log(data.id)
       $("#pokeDetails").empty();
 
@@ -124,10 +124,22 @@ $(document).ready(function () {
       var listItemHeight = $("<li>");
       listItemHeight.text("Height: " + data.height);
 
+      //show abilities of selected pokemon
+      var listOfAbilities=[];
+      var ability_count = data.abilities.length;
+      for (let i=0;i<ability_count;i++){
+        listOfAbilities.push(data.abilities[i].ability.name);
+      }
+      //console.log(listOfAbilities);
+      var listItemAbility=$("<li>");
+      var totalAbilities= listOfAbilities.toString();
+      listItemAbility.text("Abilities: " +totalAbilities);
+
       newList.append(listItemName);
       newList.append(listItemID);
       newList.append(listItemWeight);
       newList.append(listItemHeight);
+      newList.append(listItemAbility);
       //detailsDiv.append(newList);
       $("#pokeDetails").append(newList);
       var favButton = $("<button>");
