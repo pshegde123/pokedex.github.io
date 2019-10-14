@@ -2,7 +2,6 @@ let currentCardName = "";
 let count = 0;
 
 $(document).ready(function () {
-
   // Web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyAHGMj8An1Hye3IiSR2BcRFc07RyFBQLa4",
@@ -112,16 +111,16 @@ $(document).ready(function () {
 
       //var detailsDiv = $("<div id='stats'>");
       var newList = $("<ul>");
-      
+
       //pokemon description
-      var listItemDescription=$("<li>");
+      var listItemDescription = $("<li>");
       var descURL = data.species.url;
-      $.getJSON(descURL,function(result){
+      $.getJSON(descURL, function (result) {
         var flavor_count = result.flavor_text_entries.length;
-        for (let m=0;m<flavor_count;m++){
-         if(result.flavor_text_entries[m].language.name == "en"){
-            listItemDescription.text("Description:"+result.flavor_text_entries[m].flavor_text);
-         }
+        for (let m = 0; m < flavor_count; m++) {
+          if (result.flavor_text_entries[m].language.name == "en") {
+            listItemDescription.text("Description:" + result.flavor_text_entries[m].flavor_text);
+          }
         }
       });
 
@@ -159,7 +158,7 @@ $(document).ready(function () {
       if (allHeldItems.length > 0) {
         listItemHeldItems.text("Held items: " + allHeldItems);
       }
-      
+
       newList.append(listItemName);
       newList.append(listItemDescription);
       newList.append(listItemID);
@@ -169,6 +168,26 @@ $(document).ready(function () {
       if (allHeldItems.length > 0) {
         newList.append(listItemHeldItems);
       }
+
+      //display base stats in graph
+      var stats_count = data.stats.length;
+      var graph_title=[];
+      var graph_numbers=[];
+      for (let x=0;x<stats_count;x++){
+        //console.log(data.stats[x].base_stat, data.stats[x].stat.name);
+        graph_title.push(data.stats[x].stat.name);
+        graph_numbers.push(data.stats[x].base_stat);
+      }
+      var graph_data = [graph_title,graph_numbers];
+      var graphData = [
+        {
+          x: graph_title,
+          y: graph_numbers,
+          type: 'bar'
+        }
+      ];
+      Plotly.newPlot('statGraph', graphData);
+      //stats end
 
       //detailsDiv.append(newList);
       $("#pokeDetails").append(newList);
