@@ -73,3 +73,15 @@ li {
 
   
 }
+
+.page-footer {
+  background-color: #f83138;
+}
+
+* {
+  color: black;
+}
+
+h4 {
+  color: white;
+}
