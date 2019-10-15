@@ -4,8 +4,7 @@
 
 ## Details
 ### Project Title  
-Pokedex
-https://ehamil79.github.io/Project-1/
+[Pokedex](https://ehamil79.github.io/Project-1/)
 
 ### Team Members 
 * Eric Hamil, 
