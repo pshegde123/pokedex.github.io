@@ -1,3 +1,10 @@
+* {
+  color: white;
+ }
+ .card-content {
+  color: black;
+ }
+
 @font-face {
     font-family: myFont;
     src: url("../fonts/Pokemon\ Solid1.ttf");
@@ -8,6 +15,7 @@ nav .brand-logo {
     font-size: 50px;
     margin-top:-12px;
     margin-left: 5px;
+    color: yellow;
 }
 
 .nav-wrapper {
@@ -15,18 +23,17 @@ nav .brand-logo {
   background-size: 80vmin ;
   background-repeat: no-repeat;
   background-color: #f83138;
+  font-size: 50px;  
+  font-family: myFont;
+  text-shadow: 2px 2px blue;
 
-    font-size: 50px;
-    font-family: myFont;
-    color: yellow;
-    text-shadow: 2px 2px blue;
     
 }
 
 
 
 body {
-    background: url(../images/pokemon_go_hd-wide.jpg);
+    background: url(../images/2.jpg);
     /* background-repeat: no-repeat; */
     /* background-size: 100%; */
     background-position: center;
@@ -34,9 +41,35 @@ body {
     background-size: cover;
     /* opacity: 0.5; */
     /* filter: alpha(opacity=50); */
+    color: white;
 
 }
 
 #column {
   background-image: url("../Images/pokeball3.gif");
+}
+
+.btn {
+  margin-left: 15px;
+}
+#ui-id-1 {
+  color: black;
+  background-image: url("../images/image.png");
+  /* opacity: -0.5; */
+  /* background-color: white; */
+  width: 50px;
+  
+
+}
+
+#pokeInput {
+  width: 575px;
+}
+
+li {
+  color:white;
+  font-size: 20px;
+  font-weight: bolder;
+
+  
 }
