@@ -14,7 +14,7 @@ nav .brand-logo {
     font-family: myFont;
     font-size: 50px;
     margin-top:-12px;
-    margin-left: 5px;
+    margin-left: 50px;
     color: yellow;
 }
 
@@ -49,28 +49,24 @@ body {
   background-image: url("../Images/pokeball3.gif");
 }
 
-.btn {
-  margin-left: 15px;
-}
+
 #ui-id-1 {
-  color: black;
-  background-image: url("../images/image.png");
-  /* opacity: -0.5; */
-  /* background-color: white; */
   width: 50px;
   
-
+  
 }
 
-#pokeInput {
-  width: 575px;
-}
 
 li {
   color:white;
   font-size: 20px;
   font-weight: bolder;
+  padding: 3px;
+  font-family: cursive;
+  max-width: 300px;
+  margin-left: 360px;
 
+  
   
 }
 
@@ -79,9 +75,34 @@ li {
 }
 
 * {
-  color: black;
+  color: white;
 }
 
 h4 {
   color: white;
+  font-family: cursive;
 }
+
+.flow-text {
+  font-family: cursive;
+
+}
+
+.btn {
+  margin-left: 15px;
+  color: black;
+  background-color: #f83138;
+  font-weight: bold;
+  /* font-family: cursive; */
+  font-size: 16px;
+}
+
+.card {
+  background-color: rgba(226, 214, 41, 0.959);
+}
+
+.btn-floating {
+  background-color: rgba(255, 0, 0, 0.253);
+}
+
+
