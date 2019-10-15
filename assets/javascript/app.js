@@ -113,13 +113,13 @@ $(document).ready(function () {
       var newList = $("<ul>");
 
       //pokemon description
-      var listItemDescription = $("<li>");
+      var listItemDescription = $("<li style:'word-wrap:break-word;'>");
       var descURL = data.species.url;
       $.getJSON(descURL, function (result) {
         var flavor_count = result.flavor_text_entries.length;
         for (let m = 0; m < flavor_count; m++) {
           if (result.flavor_text_entries[m].language.name == "en") {
-            listItemDescription.text("Description:" + result.flavor_text_entries[m].flavor_text);
+            listItemDescription.text("Description: " + result.flavor_text_entries[m].flavor_text);
           }
         }
       });
