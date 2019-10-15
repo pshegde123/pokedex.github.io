@@ -233,6 +233,8 @@ $(document).ready(function () {
 
       var sprite = $("<img class='cardImage'>");
       sprite.attr("src", data.sprites.front_default);
+      sprite.attr("data-name", child_name);
+      sprite.attr("data-url", data.sprites.front_default);
 
       var content = $("<div style='border-top:1px solid;padding:1px;'>");
       content.addClass("card-content center-align truncate");
