@@ -113,13 +113,13 @@ $(document).ready(function () {
       var newList = $("<ul>");
 
       //pokemon description
-      var listItemDescription = $("<li>");
+      var listItemDescription = $("<li style:'word-wrap:break-word;'>");
       var descURL = data.species.url;
       $.getJSON(descURL, function (result) {
         var flavor_count = result.flavor_text_entries.length;
         for (let m = 0; m < flavor_count; m++) {
           if (result.flavor_text_entries[m].language.name == "en") {
-            listItemDescription.text("Description:" + result.flavor_text_entries[m].flavor_text);
+            listItemDescription.text("Description: " + result.flavor_text_entries[m].flavor_text);
           }
         }
       });
@@ -233,6 +233,8 @@ $(document).ready(function () {
 
       var sprite = $("<img class='cardImage'>");
       sprite.attr("src", data.sprites.front_default);
+      sprite.attr("data-name", child_name);
+      sprite.attr("data-url", data.sprites.front_default);
 
       var content = $("<div style='border-top:1px solid;padding:1px;'>");
       content.addClass("card-content center-align truncate");
