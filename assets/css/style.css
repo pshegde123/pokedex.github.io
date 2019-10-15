@@ -63,7 +63,9 @@ li {
   font-weight: bolder;
   padding: 3px;
   font-family: cursive;
-  
+  max-width: 300px;
+  margin-left: 360px;
+
   
   
 }
