@@ -1,4 +1,4 @@
-# Project-1
+# Pokedex
 ##### This is a course project for Georgia Tech Full Stack Web Development Bootcamp
 
 
