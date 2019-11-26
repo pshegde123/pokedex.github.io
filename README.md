@@ -1,11 +1,6 @@
 # Pokedex
 ##### This is a course project for Georgia Tech Full Stack Web Development Bootcamp
 
-
-## Details
-### Project Title  
-[Pokedex](https://ehamil79.github.io/Project-1/)
-
 ### Team Members 
 * Eric Hamil, 
 * Pradnya Hegde, 
@@ -22,7 +17,7 @@ Left panel on the page displays few pokemon cards pre-loaded from Poke API. When
 ### Sketch of Final Product 
  TBDPradnya
   
-### APIs to be Used 
+### APIs Used 
 * [PokeAPI](pokeapi.co) - This API provides all the Pokemon data in RESTful format. 
 * [Plotly](plot.ly) - Scientific graphing and plotting libraries for making interactive, web-ready, publication-quality graphs.
 * [Giphy API](giphy.com) - This API provides largest collection of online GIF's. 
