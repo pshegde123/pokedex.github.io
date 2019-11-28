@@ -1,9 +1,21 @@
 # Pokedex
-##### This is a course project for Georgia Tech Full Stack Web Development Bootcamp
+
+![](assets/Images/Pokedex.PNG)
+
 
 ### Project Description 
-This is a fun project which allows user to select a pokemon character and view all the availalble stats about it.You can begin to build a deck of cards by clicking on 'Add to Favorite' button. Project data is saved in [Firebase](https://firebase.google.com) database,so when you revisit the page your cards are still available.
-Left panel on the page displays few pokemon cards pre-loaded from Poke API. When you click on any of the card, respective GIF and stats are displayed on the page. A graph of base stats is also displayed on the page.
+This is a course project for Georgia Tech Full Stack Web Development Bootcamp.
+This app allows user to select a pokemon character card, view the availalble stats and save the card.
+Project data is persisted using [Firebase](https://firebase.google.com) database.
+
+### How to build a deck?
+(1) Left panel on the page displays few pokemon cards pre-loaded using `Poke API`. Click on any card, respective GIF and stats are displayed on the page.
+
+(2) To search additional characters use search bar.
+
+(3) If you wish to add that card to your deck click 'Add to Favorite' button.
+
+(4) Cards in the deck are displayed in the right panel.
 
 ##### Technologies Used:
 * `HTML`,
@@ -11,12 +23,9 @@ Left panel on the page displays few pokemon cards pre-loaded from Poke API. When
 * `JavaScript`,
 * `JQuery`,
 * `Firebase database`
-
-### Sketch of Final Product 
- TBDPradnya
   
 ### APIs Used 
-* [PokeAPI](pokeapi.co) - This API provides all the Pokemon data in RESTful format. 
+* [Poke API](pokeapi.co) - This API provides all the Pokemon data in RESTful format. 
 * [Plotly](plot.ly) - Scientific graphing and plotting libraries for making interactive, web-ready, publication-quality graphs.
 * [Giphy API](giphy.com) - This API provides largest collection of online GIF's. 
 
