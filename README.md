@@ -9,13 +9,15 @@ This app allows user to select a pokemon character card, view the availalble sta
 Project data is persisted using [Firebase](https://firebase.google.com) database.
 
 ### How to build a deck?
-(1) Left panel on the page displays few pokemon cards pre-loaded using `Poke API`. Click on any card, respective GIF and stats are displayed on the page.
+(1) [Click here](https://pshegde123.github.io/pokedex.github.io/) to view the project.
 
-(2) To search additional characters use search bar.
+(2) Left panel on the page displays few pokemon cards pre-loaded using `Poke API`. Click on any card, respective GIF and stats are displayed on the page.
 
-(3) If you wish to add that card to your deck click 'Add to Favorite' button.
+(3) To search additional characters use search bar.
 
-(4) Cards in the deck are displayed in the right panel.
+(4) If you wish to add that card to your deck click 'Add to Favorite' button.
+
+(5) Cards in the deck are displayed in the right panel.
 
 ##### Technologies Used:
 * `HTML`,
